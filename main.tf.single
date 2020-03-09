@@ -1,0 +1,29 @@
+terraform {
+  required_version = ">=0.12.0"
+}
+
+provider "aws" {
+  version = "~> 2.0"
+  region  = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami = "ami-08bc77a2c7eb2b1da"
+  instance_type = "t2.nano"
+  key_name = "Spark1"
+  #https://github.com/hashicorp/terraform/issues/575
+  security_groups = ["${data.aws_security_group.selected.id}"]
+  subnet_id = "subnet-29347a5f"
+  tags = {
+    Name = "Terraform Test 1"
+  }
+}
+
+data "aws_security_group" "selected" {
+  #id = "sg-de4fd9a5"
+  name = "All Traffic Anywhere"
+}
+output "aws_security_group" {
+  #value = data.aws_security_group.selected.name
+  value = data.aws_security_group.selected.id
+}

@@ -1,0 +1,13 @@
+[master]
+master00 ansible_host=54.85.158.86
+
+[slave]
+slave00 ansible_host=34.224.102.70
+slave01 ansible_host=100.26.23.135
+
+[vars:master]
+ansible_private_key_file=/home/ubuntu/.ssh/Ansible1.pem
+
+[vars:slave]
+ansible_private_key_file=/home/ubuntu/.ssh/Ansible1.pem
+

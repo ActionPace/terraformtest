@@ -1,0 +1,5 @@
+aws_instance = [
+  "172.30.0.249",
+  "172.30.0.156",
+]
+aws_security_group = sg-de4fd9a5
